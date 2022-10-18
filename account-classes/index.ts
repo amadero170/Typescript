@@ -1,13 +1,4 @@
-type Individual = {
-  name: string;
-  taxId: string;
-};
-type Joint = Individual[];
-
-type Custodial = [Individual, { name: string }];
-
-type Corporate = Individual;
-
+import { Individual, Joint, Custodial, Corporate } from "./types";
 class Account {
   account: string = "";
   ownerType: string;
