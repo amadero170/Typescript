@@ -24,9 +24,6 @@ export default function App() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(e);
-
-    console.log("accType", accType);
     switch (accType) {
       case "Individual":
         setNewAccount(
@@ -64,7 +61,6 @@ export default function App() {
     setName2("");
     setTaxid2("");
     setAccType("Individual");
-    console.log("new account:", newAccount);
   };
   return (
     <div className="create">

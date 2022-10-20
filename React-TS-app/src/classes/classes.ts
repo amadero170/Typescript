@@ -1,5 +1,5 @@
 import { Individual, Joint, Custodial, Corporate } from "./owner-types";
-class Account {
+abstract class Account {
   account: string = "";
   ownerType: string = "";
 
