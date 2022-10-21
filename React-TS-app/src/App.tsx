@@ -6,7 +6,7 @@ import {
   custodialAccount,
   jointAccount,
 } from "./classes/classes";
-
+import { Individual, Joint, Custodial } from "./classes/owner-types";
 import NewAccountInformation from "./NewAccountInformation";
 
 export default function App() {
@@ -17,9 +17,9 @@ export default function App() {
   const [taxid2, setTaxid2] = useState("");
   const [newAccount, setNewAccount] = useState<{
     ownerType: string;
-    owner: {};
+    owner: Individual | Joint | Custodial;
     account: string;
-  }>({ ownerType: "", owner: {}, account: "" });
+  }>({ ownerType: "", owner: { name: "", taxId: "" }, account: "" });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

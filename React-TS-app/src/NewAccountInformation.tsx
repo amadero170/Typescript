@@ -1,26 +1,33 @@
+import { Individual, Joint, Custodial } from "./classes/owner-types";
+
 export default function NewAccountInformation({
   accountType,
   owner,
   account,
 }: {
   accountType?: string | undefined;
-  owner?: any;
+  owner: Individual | Joint | Custodial;
   account?: string;
 }) {
   let ownerInfo: string;
-
-  if (
-    accountType === "individual account" ||
-    accountType === "corporate account"
+  if (!owner) {
+    ownerInfo = "no new accounts created";
+  } else if (
+    (accountType === "individual account" ||
+      accountType === "corporate account") &&
+    owner &&
+    !Array.isArray(owner)
   ) {
     ownerInfo = `New account created, owner: ${owner.name} with tax ID: ${owner.taxId}`;
-  } else if (accountType === "joint account") {
-    ownerInfo = `New joint account created, owners: ${owner.map(
-      (item: { name: string; taxId: string }) => {
-        return "name: " + item.name + " Tax ID: " + item.taxId;
-      }
-    )}`;
-  } else if (accountType === "custodial account") {
+  } else if (accountType === "joint account" && owner && Array.isArray(owner)) {
+    ownerInfo = `New joint account created, owners: ${owner.map((item: any) => {
+      return "name: " + item.name + " Tax ID: " + item.taxId;
+    })}`;
+  } else if (
+    accountType === "custodial account" &&
+    owner &&
+    Array.isArray(owner)
+  ) {
     ownerInfo = `New custodial account created, owners: ${owner.map(
       (item: { name: string }) => {
         return item.name;
