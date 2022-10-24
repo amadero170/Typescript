@@ -65,7 +65,7 @@ export default function App() {
   return (
     <div className="create">
       <h1>Form</h1>
-      <p>Create new account - B1 </p>
+      <p>Create new account - B1 - 2 </p>
       <form onSubmit={onSubmit}>
         <label>Account owner type</label>
 
