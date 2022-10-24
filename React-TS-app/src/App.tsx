@@ -10,7 +10,7 @@ import { Individual, Joint, Custodial } from "./classes/owner-types";
 import NewAccountInformation from "./NewAccountInformation";
 
 export default function App() {
-  const [accType, setAccType] = useState("Individual");
+  const [accType, setAccType] = useState("individual");
   const [name1, setName1] = useState("");
   const [taxid1, setTaxid1] = useState("");
   const [name2, setName2] = useState("");
@@ -25,7 +25,7 @@ export default function App() {
     e.preventDefault();
 
     switch (accType) {
-      case "Individual":
+      case "individual":
         setNewAccount(
           new individualAccount({ name: name1, taxId: taxid1 }, name1 + taxid1)
         );
@@ -60,12 +60,12 @@ export default function App() {
     setTaxid1("");
     setName2("");
     setTaxid2("");
-    setAccType("Individual");
+    setAccType("individual");
   };
   return (
     <div className="create">
       <h1>Form</h1>
-      <p>Create new account</p>
+      <p>Create new account - B1 </p>
       <form onSubmit={onSubmit}>
         <label>Account owner type</label>
 

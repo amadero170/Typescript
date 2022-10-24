@@ -20,6 +20,7 @@ export default function NewAccountInformation({
   ) {
     ownerInfo = `New account created, owner: ${owner.name} with tax ID: ${owner.taxId}`;
   } else if (accountType === "joint account" && owner && Array.isArray(owner)) {
+    // Find out why this item can't be type Individual, error says taxId field is missing()
     ownerInfo = `New joint account created, owners: ${owner.map((item: any) => {
       return "name: " + item.name + " Tax ID: " + item.taxId;
     })}`;
