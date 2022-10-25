@@ -19,7 +19,7 @@ export default function App() {
     ownerType: string;
     owner: Individual | Joint | Custodial;
     account: string;
-  }>({ ownerType: "", owner: { name: "", taxId: "" }, account: "" });
+  } | null>(null);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -80,7 +80,6 @@ export default function App() {
 
         <input
           type="text"
-          id="name1"
           value={name1}
           onChange={(e) => setName1(e.target.value)}
         />
@@ -89,7 +88,6 @@ export default function App() {
 
         <input
           type="text"
-          id="taxid1"
           value={taxid1}
           onChange={(e) => setTaxid1(e.target.value)}
         />
@@ -97,7 +95,6 @@ export default function App() {
 
         <input
           type="text"
-          id="name2"
           value={name2}
           onChange={(e) => setName2(e.target.value)}
         />
@@ -106,19 +103,13 @@ export default function App() {
 
         <input
           type="text"
-          id="taxid2"
           value={taxid2}
           onChange={(e) => setTaxid2(e.target.value)}
         />
-
         <button type="submit">Submit new account</button>
       </form>
 
-      <NewAccountInformation
-        accountType={newAccount.ownerType}
-        owner={newAccount?.owner}
-        account={newAccount.account}
-      />
+      {newAccount && <NewAccountInformation newAccountData={newAccount} />}
     </div>
   );
 }
